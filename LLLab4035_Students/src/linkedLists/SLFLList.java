@@ -8,6 +8,7 @@ package linkedLists;
  */
 
 import linkedLists.LinkedList;
+import linkedLists.SLFLList.SNode;
 
 public class SLFLList<E> 
 implements LinkedList<E>
@@ -15,58 +16,127 @@ implements LinkedList<E>
 
 	private SNode<E> first, last; 
 	int length = 0; 
-	
+
 	public SLFLList() { 
 		first = last = null; 
 	}
-	
-	
+
+
 	public void addFirstNode(Node<E> nuevo) {
+		SNode<E> newest = (SNode<E>) nuevo;
+		newest.setNext(first);
+		first = newest;
+
+		if(length() == 0){
+			last = newest;
+		}
+		length++;
+
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void addNodeAfter(Node<E> target, Node<E> nuevo) {
-		// TODO Auto-generated method stub
-		
+
+		SNode<E> sTarget = (SNode<E>) target, sNuevo = (SNode<E>) nuevo;
+		if(target==last){
+			sTarget.setNext(sNuevo);
+			last = sNuevo;
+		}
+		else{
+			sNuevo.setNext(sTarget.getNext());
+			sTarget.setNext(sNuevo);
+		}
+		length++;
+
 	}
 
 	public void addNodeBefore(Node<E> target, Node<E> nuevo) {
-		// TODO Auto-generated method stub
-		
+		SNode<E> sTarget = (SNode<E>) target;
+		SNode<E> sNuevo = (SNode<E>) nuevo;
+		if(target == first){
+			addFirstNode(target);
+		}
+		else {
+			SNode<E> prev = (SNode<E>)getNodeBefore(target);
+			prev.setNext(sNuevo);
+			sNuevo.setNext(sTarget);	
+		}
+		length++;
+
 	}
 
 	public Node<E> getFirstNode() throws NodeOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+
+		return first;
 	}
 
 	public Node<E> getLastNode() throws NodeOutOfBoundsException {
 		// TODO Auto-generated method stub
-		return null;
+		return last;
 	}
 
 	public Node<E> getNodeAfter(Node<E> target) throws NodeOutOfBoundsException {
 		// TODO Auto-generated method stub
-		return null;
+		SNode<E> snTarget = (SNode<E>) target;
+		if(snTarget == null){
+			throw new NodeOutOfBoundsException();
+		}
+
+		return snTarget.getNext();
 	}
 
-	public Node<E> getNodeBefore(Node<E> target)
-			throws NodeOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+	public Node<E> getNodeBefore(Node<E> target)throws NodeOutOfBoundsException {
+		SNode<E> prev = null;
+		if(prev == first){
+			return null;
+		}
+		prev = first;
+		while(prev!= null && prev.getNext()!= target){
+			prev = prev.getNext();
+		}
+		return prev;
 	}
 
 	public int length() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.length;
 	}
 
 	public void removeNode(Node<E> target) {
-		// TODO Auto-generated method stub
-		
+		if(length == 0) {return;}
+
+		SNode<E> sTarget = (SNode<E>) target;
+
+		if(sTarget == first)
+		{
+			first= sTarget.getNext();
+			if(length ==1){
+				last =null;
+			}
+			
+		}
+
+		else 
+		{
+			if(length == 1){
+				last = first = null;
+			}
+			else {
+				SNode<E> prev = (SNode<E>)getNodeBefore(sTarget);
+				prev.setNext(sTarget.getNext());
+				if (sTarget == last){
+					last = prev;
+				}
+			}
+
+		}
+		// Clearing the object
+		sTarget.setElement(null);
+		sTarget.setNext(null);
+		length--;
 	}
-	
+
 	public Node<E> createNewNode() {
 		return new SNode<E>();
 	}
@@ -75,7 +145,7 @@ implements LinkedList<E>
 	///////////////////////////////////////////////////
 	// private and static inner class that defines the 
 	// type of node that this list implementation uses
-	private static class SNode<T> implements Node<T> {
+	public static class SNode<T> implements Node<T> {
 		private T element; 
 		private SNode<T> next; 
 		public SNode() { 
