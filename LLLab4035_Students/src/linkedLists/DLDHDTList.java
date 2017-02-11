@@ -3,11 +3,19 @@ package linkedLists;
 public class DLDHDTList<E> implements LinkedList<E> {
 	private DNode<E> header, trailer; 
 	private int length; 
-	
+
 	public DLDHDTList() { 
-		// ADD CODE HERE to generate empty linked list of this type 
+		header = (DNode<E>)createNewNode();
+		trailer = (DNode<E>) createNewNode();
+		header.setPrev(null);
+		header.setNext(trailer);
+		header.setElement(null);
+		trailer.setPrev(header);
+		trailer.setNext(null);
+		trailer.setElement(null);
+		length = 0;
 	}
-	
+
 	public void addFirstNode(Node<E> nuevo) {
 		addNodeAfter(header, nuevo); 
 	}
@@ -24,7 +32,14 @@ public class DLDHDTList<E> implements LinkedList<E> {
 	}
 
 	public void addNodeBefore(Node<E> target, Node<E> nuevo) {
-		// ADD CODE HERE
+		DNode<E> dNuevo = (DNode<E>) nuevo; 
+		DNode<E> dTarget = (DNode<E>)target; 
+		DNode<E> dBefore = dTarget.getPrev();
+		dBefore.setNext(dNuevo);
+		dNuevo.setPrev(dBefore);
+		dNuevo.setNext(dTarget);
+		dTarget.setPrev(dNuevo);
+		length++;
 	}
 
 	public Node<E> createNewNode() {
@@ -45,14 +60,26 @@ public class DLDHDTList<E> implements LinkedList<E> {
 
 	public Node<E> getNodeAfter(Node<E> target)
 			throws NodeOutOfBoundsException {
-		// ADD CODE HERE AND MODIFY RETURN ACCORDINGLY
-		return null; 
+		if (target == this.getLastNode())
+			return null;
+		else 
+		{
+			DNode<E> dTarget = (DNode<E>) target;
+			return (dTarget.getNext()); 
+		}
+
 	}
 
 	public Node<E> getNodeBefore(Node<E> target)
 			throws NodeOutOfBoundsException {
-		// ADD CODE HERE AND MODIFY RETURN ACCORDINGLY
-		return null; 
+		if(target == getFirstNode())
+			return null;
+
+		else 
+		{
+			DNode<E> dTarget = (DNode<E>) target;
+			return (dTarget.getPrev()); 
+		}
 	}
 
 	public int length() {
@@ -60,9 +87,15 @@ public class DLDHDTList<E> implements LinkedList<E> {
 	}
 
 	public void removeNode(Node<E> target) {
-		// ADD CODE HERE 
+		DNode<E> dTarget = (DNode<E>)target; 
+		DNode<E> dBefore = dTarget.getPrev(), dNext = dTarget.getNext();
+		dBefore.setNext(dNext);
+		dNext.setPrev(dBefore);
+		dTarget.cleanLinks();
+		dTarget.setElement(null);
+		length--;
 	}
-	
+
 	/**
 	 * Prepares every node so that the garbage collector can free 
 	 * its memory space, at least from the point of view of the
@@ -79,22 +112,24 @@ public class DLDHDTList<E> implements LinkedList<E> {
 			header = nnode; 
 		}
 	}
-	
+
 	/**
 	 * The execution of this method removes all the data nodes from
 	 * the current instance of the list, leaving it as a valid empty
 	 * doubly linked list with dummy header and dummy trailer nodes. 
 	 */
 	public void makeEmpty() { 
-		// TODO
+		while(header.getNext()!= trailer){
+			removeNode(this.getFirstNode());
+		}
 	}
-		
+
 	protected void finalize() throws Throwable {
-	    try {
+		try {
 			this.destroy(); 
-	    } finally {
-	        super.finalize();
-	    }
+		} finally {
+			super.finalize();
+		}
 	}
 
 	/**
@@ -109,16 +144,16 @@ public class DLDHDTList<E> implements LinkedList<E> {
 
 		// Constructors
 		public DNode() {}
-		
+
 		public DNode(E e) { 
 			element = e; 
 		}
-		
+
 		public DNode(E e, DNode<E> p, DNode<E> n) { 
 			prev = p; 
 			next = n; 
 		}
-		
+
 		// Methods
 		public DNode<E> getPrev() {
 			return prev;
@@ -139,7 +174,7 @@ public class DLDHDTList<E> implements LinkedList<E> {
 		public void setElement(E data) {
 			element = data; 
 		} 
-		
+
 		/**
 		 * Just set references prev and next to null. Disconnect the node
 		 * from the linked list.... 
@@ -147,7 +182,7 @@ public class DLDHDTList<E> implements LinkedList<E> {
 		public void cleanLinks() { 
 			prev = next = null; 
 		}
-		
+
 	}
 
 }

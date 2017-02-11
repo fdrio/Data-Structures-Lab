@@ -24,6 +24,7 @@ public class DLDTester {
 		node.setElement(15);
 		
 		list.addFirstNode(node);
+		
 		list.makeEmpty();
 		for(int index=0; index<list.length(); index++){
 			System.out.println(node.getElement());
