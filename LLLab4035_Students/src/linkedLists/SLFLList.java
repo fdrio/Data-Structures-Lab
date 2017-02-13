@@ -67,16 +67,23 @@ implements LinkedList<E>
 	}
 
 	public Node<E> getFirstNode() throws NodeOutOfBoundsException {
+		if(length == 0)
+			 throw new NodeOutOfBoundsException();
+		
 
 		return first;
 	}
 
 	public Node<E> getLastNode() throws NodeOutOfBoundsException {
+		if(length == 0)
+			 throw new NodeOutOfBoundsException();
 		// TODO Auto-generated method stub
 		return last;
 	}
 
 	public Node<E> getNodeAfter(Node<E> target) throws NodeOutOfBoundsException {
+		if(length == 0)
+			 throw new NodeOutOfBoundsException();
 		// TODO Auto-generated method stub
 		SNode<E> snTarget = (SNode<E>) target;
 		if(snTarget == null){
@@ -87,9 +94,11 @@ implements LinkedList<E>
 	}
 
 	public Node<E> getNodeBefore(Node<E> target)throws NodeOutOfBoundsException {
+		if(length == 0)
+			 throw new NodeOutOfBoundsException();
 		SNode<E> prev = null;
-		if(prev == first){
-			return null;
+		if(target == first){
+			 throw new NodeOutOfBoundsException();
 		}
 		prev = first;
 		while(prev!= null && prev.getNext()!= target){

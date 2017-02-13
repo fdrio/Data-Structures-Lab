@@ -61,7 +61,7 @@ public class DLDHDTList<E> implements LinkedList<E> {
 	public Node<E> getNodeAfter(Node<E> target)
 			throws NodeOutOfBoundsException {
 		if (target == this.getLastNode())
-			return null;
+			 throw new NodeOutOfBoundsException();
 		else 
 		{
 			DNode<E> dTarget = (DNode<E>) target;
@@ -73,7 +73,7 @@ public class DLDHDTList<E> implements LinkedList<E> {
 	public Node<E> getNodeBefore(Node<E> target)
 			throws NodeOutOfBoundsException {
 		if(target == getFirstNode())
-			return null;
+			 throw new NodeOutOfBoundsException();
 
 		else 
 		{
