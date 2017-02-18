@@ -28,20 +28,22 @@ public class LinkedListTester1 {
 	    list.add(1, 200); 
 		
 		for (int i=20, j=1; i< 50; i+=5, j++) { 
+			
 			list.add(j, i); 
+			
 		}
 		
 		showList(list); 
 
 
-		/** REMOVE THIS LINE TO TEST remove
+		 //REMOVE THIS LINE TO TEST remove
 		 
 		showListAfterDeleting(list, 4); 
 		showListAfterDeleting(list, 2); 
 		showListAfterDeleting(list, 30); 
 		showListAfterAdding(list, 3,  700); 
 		
-		-- REMOVE THIS LINE TO TEST remove  **/
+		//-- REMOVE THIS LINE TO TEST remove  **/
 
 		/** REMOVE THIS LINE TO TEST list reversing
 		 
@@ -63,7 +65,7 @@ public class LinkedListTester1 {
 		showListAfterAdding(list, 3,  1002); 
 
 		
-		/** REMOVE THIS LINE TO TEST set
+		//REMOVE THIS LINE TO TEST set
 		 
 		 
 		showListAfterReplacingElement(list, 0,  1800); 
@@ -72,15 +74,15 @@ public class LinkedListTester1 {
 		showListAfterReplacingElement(list, 1,  1511); 
 		showListAfterReplacingElement(list, list.size()-1, 404); 
 		
-		-- REMOVE THIS LINE TO TEST set   **/ 
+		//-- REMOVE THIS LINE TO TEST set   **/ 
 		
 		
-		/** REMOVE THIS LINE TO TEST sorting 
+		 //REMOVE THIS LINE TO TEST sorting 
 		 
 		showListAfterSorting(list, new IntegerComparator1()); 
 		showListAfterSorting(list, new IntegerComparator2()); 
 		
-		    REMOVE THIS LINE TO TEST sorting **/
+		    //REMOVE THIS LINE TO TEST sorting **/
 		
 	}
 		

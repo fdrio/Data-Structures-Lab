@@ -34,11 +34,11 @@ public class SLRIndexList<E> implements IndexList<E> {
 	public void add(int index, E e) 
 	throws IndexOutOfBoundsException 
 	{ 
-		if (index < 0 || index >size) 
+		if (index < 0 || index > size) 
 			throw new IndexOutOfBoundsException(
 					"SLRIndexList.add: invalid index = " + index); 
 
-		// index is valid for the add operacion
+		// index is valid for the add operation
 		first = recAdd(first, index, e); 
 		size++; 
 	} 
@@ -107,9 +107,9 @@ public class SLRIndexList<E> implements IndexList<E> {
 			return newest;
 		}
 		else{
-			SNode<E> newest = recAdd(f.getNext(),i-1,e);
-			f.setNext(newest);
-			return newest;
+			SNode<E> next = recAdd(f.getNext(),i-1,e);
+			f.setNext(next);
+			return f;
 			
 		}
 		
