@@ -5,7 +5,7 @@ import linkedLists.Node;
 
 public class LLIndexList<E> implements IndexList<E> {
 	private LinkedList<E> internalLL;  
-
+	
 	/**
 		Creates an empty instance of a list. 
 	 **/ 
@@ -16,7 +16,7 @@ public class LLIndexList<E> implements IndexList<E> {
 
 	/**
 		Determines the size of the list. 
-		@return size of the list – number of elements. 
+		@return size of the list ï¿½ number of elements. 
 	 **/
 	public int size() { 
 		return internalLL.length(); 
@@ -29,8 +29,7 @@ public class LLIndexList<E> implements IndexList<E> {
 	public boolean isEmpty() { 
 		return this.size() == 0; 
 	} 
-	
-	/**
+		/**
 	Private method to access the data node at the
     position given in the internal linked list. 
     If the list is not empty, he first data node 
@@ -57,7 +56,7 @@ public class LLIndexList<E> implements IndexList<E> {
 		@param e the new element to insert. 
 		@throws IndexOutOfBoundsException if the index
 			i does not corresponds to the index 
-			of a valid position to insert…
+			of a valid position to insertï¿½
 	 **/ 
 	public void add(int index, E e) 
 	throws IndexOutOfBoundsException 

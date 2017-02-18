@@ -109,5 +109,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 		for (int pos = low; pos <= sup; pos++)
 			element[pos-1] = element[pos]; 
 	}
+	
+
 
 }
