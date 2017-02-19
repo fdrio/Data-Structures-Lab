@@ -107,8 +107,8 @@ public class SLRIndexList<E> implements IndexList<E> {
 			return newest;
 		}
 		else{
-			SNode<E> next = recAdd(f.getNext(),i-1,e);
-			f.setNext(next);
+			
+			f.setNext(recAdd(f.getNext(),i-1,e));
 			return f;
 			
 		}
