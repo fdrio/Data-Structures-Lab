@@ -42,7 +42,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 		first = recAdd(first, index, e); 
 		size++; 
 	} 
-
+	//Removes a Node at a specific index 
 	public E remove(int index) 
 	throws IndexOutOfBoundsException 
 	{ 
@@ -53,7 +53,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 		// index is valid for remove operation
 		E etr = get(index); 
 
-		recRemove(first,index);
+		first =recRemove(first,index);
 		
 		size--; 
 
@@ -86,6 +86,12 @@ public class SLRIndexList<E> implements IndexList<E> {
 	/* OF INDEX LIST ADT. SEE DESCRIPTIONS IN SPECIFICATIONS     */
 	/* DOCUMENT.                                                 */
 	/*************************************************************/
+	/**
+	 * Method which removes a Node at a specific index
+	 * @param f first Node
+	 * @param i index to remove 
+	 * @return returns the first Node
+	 */
 	private static <E> SNode<E> recRemove(SNode<E> f, int i) 
 	{ 
 		if (i==0) {
@@ -99,7 +105,13 @@ public class SLRIndexList<E> implements IndexList<E> {
 			return f; 
 		}
 	} 
-	
+	/**
+	 * Method which adds the new Node at a certain index =
+	 * @param f first node
+	 * @param i index where to add the new element
+	 * @param e element to add in the new Node
+	 * @return returns the first 
+	 */
 	private static <E> SNode<E> recAdd(SNode<E> f, int i, E e) 		
 	{ 
 		if(i==0){
@@ -115,7 +127,13 @@ public class SLRIndexList<E> implements IndexList<E> {
 		
 		  // just to be able to compile
 	} 
-
+	/**
+	 * Sets a specific element in the Node at a certain index
+	 * @param f first node 
+	 * @param index position where it wants to change the element
+	 * @param e Element to add
+	 * @return returns the element replaced
+	 */
 	private static <E> E recSet(SNode<E> f, int index, E e) 
 	{ 
 		if(index==0){
@@ -128,6 +146,8 @@ public class SLRIndexList<E> implements IndexList<E> {
 		}
 		
 	} 
+		
+	
 	
 	
 

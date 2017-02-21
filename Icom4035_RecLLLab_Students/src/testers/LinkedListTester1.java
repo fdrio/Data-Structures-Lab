@@ -38,7 +38,7 @@ public class LinkedListTester1 {
 
 		 //REMOVE THIS LINE TO TEST remove
 		 
-		showListAfterDeleting(list, 4); 
+		showListAfterDeleting(list, 0); 
 		showListAfterDeleting(list, 2); 
 		showListAfterDeleting(list, 30); 
 		showListAfterAdding(list, 3,  700); 
