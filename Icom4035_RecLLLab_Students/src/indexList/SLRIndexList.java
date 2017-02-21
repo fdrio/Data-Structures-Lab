@@ -239,7 +239,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 	 * from the current instance of the list. 
 	 */
 	public void makeEmpty() { 
-		// TODO
+		removeAll();
 	}
 
 	protected void finalize() throws Throwable {
