@@ -89,7 +89,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 	/**
 	 * Method which removes a Node at a specific index
 	 * @param f first Node
-	 * @param i index to remove 
+	 * @param i index to remove relative to the first Node
 	 * @return returns the first Node
 	 */
 	private static <E> SNode<E> recRemove(SNode<E> f, int i) 
@@ -108,7 +108,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 	/**
 	 * Method which adds the new Node at a certain index =
 	 * @param f first node
-	 * @param i index where to add the new element
+	 * @param i index where to add the new element relative to the first Node
 	 * @param e element to add in the new Node
 	 * @return returns the first 
 	 */
@@ -130,7 +130,7 @@ public class SLRIndexList<E> implements IndexList<E> {
 	/**
 	 * Sets a specific element in the Node at a certain index
 	 * @param f first node 
-	 * @param index position where it wants to change the element
+	 * @param index position where it wants to change the element relative to the first Node
 	 * @param e Element to add
 	 * @return returns the element replaced
 	 */
