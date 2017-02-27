@@ -65,7 +65,7 @@ public class SystemCommandsProcessor extends CommandProcessor {
 		// accepts in other instances...... 
 		createCommandList(1);    // only 1 state -- GENERALSTATE
 
-		// commands for the state GENERALSTATE
+		// commands for the state GENtheIndexERALSTATE
 
 		// the following are just for demonstration...
 		add(GENERALSTATE, SystemCommand.getVLSC("testoutput int", 
@@ -83,7 +83,7 @@ public class SystemCommandsProcessor extends CommandProcessor {
 		// is also working (in execute method) accordingly. See the documentation inside
 		// the CommandActionHandler class for testoutput command.
 		add(GENERALSTATE, SystemCommand.getVLSC("create name", new CreateProcessor())); 
-
+		add(GENERALSTATE, SystemCommand.getFLSC("add name int int", new AddProcessor()));
 		// the following commands are treated as fixed lentgh commands....
 		add(GENERALSTATE, SystemCommand.getFLSC("showlists", new ShowListsProcessor())); 		
 		add(GENERALSTATE, SystemCommand.getFLSC("append name int", new AppendProcessor())); 
@@ -102,6 +102,40 @@ public class SystemCommandsProcessor extends CommandProcessor {
 
 	public ArrayList<String> getResultsList() { 
 		return resultsList; 
+	}	
+	
+	private class AddProcessor implements CommandActionHandler{
+
+		@Override
+		public ArrayList<String> execute(Command c) {
+			// TODO Auto-generated method stub
+			resultsList = new ArrayList<String>(); 
+
+		      FixedLengthCommand fc = (FixedLengthCommand) c;
+
+		      // the following needs to be adapted to named lists and the 
+		      // usage of the ListsManagerObject ......
+
+		      String name = fc.getOperand(1); 
+		      int listIndex = listsManager.getListIndex(name); 
+		      if (listIndex == -1)
+		         resultsList.add("No such list: " + name);
+		      
+		      else {
+		    	  
+		       int theIndex =  Integer.parseInt(fc.getOperand(2));
+			   int value = Integer.parseInt(fc.getOperand(3)); 
+			   if(theIndex <0 ||theIndex > listsManager.getSize(listIndex)){
+			    	  resultsList.add("Invalid index");
+			      }
+			  
+			    else 
+			    	listsManager.addElement(listIndex,theIndex,value);
+		      }
+		      return resultsList; 
+      
+		}
+		
 	}
 
 	// INNER CLASSES -- ONE FOR EACH VALID COMMAND --
