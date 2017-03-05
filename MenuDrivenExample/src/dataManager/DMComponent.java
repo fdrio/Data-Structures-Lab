@@ -37,6 +37,16 @@ public class DMComponent {
 			lol.add(nlist); 
 		}
 	}
+	public void removeList(String name) { 
+		int index = getIndexForList(name); 
+		if (index == -1) 
+			IOComponent.getComponent().output("Duplicate list name " + name + ".\n"); 
+		else { 
+			
+			lol.remove(index);
+		}
+	}
+	
 	
 	/**
 	 * Adds a new element to a particular list.
@@ -190,9 +200,10 @@ public class DMComponent {
 	 * that such list occupies in the system's list of lists...
 	 */
 	private int getIndexForList(String name) { 
-		for (int i=0; i<lol.size(); i++) 
+		for (int i=0; i<lol.size(); i++) {
 			if (name.equals(lol.get(i).getName())) 
 				return i; 
+			}
 		
 		return -1; 
 	}
