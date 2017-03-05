@@ -15,11 +15,16 @@ public class LLQueue<E> implements Queue<E>
 	public E dequeue() throws EmptyQueueException {
 		if (isEmpty())
 			throw new EmptyQueueException("dequeue: Queue is empty."); 
-		E etr = front.getElement(); 
+		E etr = front.getElement();
+		SNode<E> ntr = front;
+		front = front.getNext();
+		ntr.clean();
+		size--;
+		return etr;
 
 		// ADD MISSING CODE
 
-		return etr;
+		
 	}
 
 	public void enqueue(E e) {

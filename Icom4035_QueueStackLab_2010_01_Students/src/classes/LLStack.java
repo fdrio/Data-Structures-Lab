@@ -16,10 +16,14 @@ public class LLStack<E> implements Stack<E>
 		if (isEmpty())
 			throw new EmptyStackException("pop: Stack is empty."); 
 		E etr = top.getElement(); 
-
+		SNode<E> ntr = top;
+		top = top.getNext();
+		ntr.clean();
+		size--;
+		return etr;
 		// ADD MISSING CODE
 
-		return etr;
+		
 	}
 
 	public void push(E e) {
