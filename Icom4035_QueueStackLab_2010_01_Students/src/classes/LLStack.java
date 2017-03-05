@@ -28,7 +28,7 @@ public class LLStack<E> implements Stack<E>
 
 	public void push(E e) {
 
-		// ADD MISSING CODE
+		top = new SNode<E>(e,top);
 		
 		size++; 
 	}
