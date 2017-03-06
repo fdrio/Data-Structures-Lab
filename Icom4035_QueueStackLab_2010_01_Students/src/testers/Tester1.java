@@ -2,6 +2,7 @@ package testers;
 
 import classes.EmptyStackException;
 import classes.LLStack;
+import classes.StackUsingQueue;
 
 public class Tester1 {
 
@@ -9,6 +10,7 @@ public class Tester1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		//StackUsingQueue<Integer> s = new StackUsingQueue<>();
 		LLStack<Integer> s = new LLStack<Integer>(); 
 		int[] a = { 3, 2, 4, 55, 5, 1, 1, 17, 9, 3, 0, 4, 5, 7, 17, 28, 0, 9, 10, 40, 21, 22, 5, 6, -1}; 
 		for (int n : a) { 

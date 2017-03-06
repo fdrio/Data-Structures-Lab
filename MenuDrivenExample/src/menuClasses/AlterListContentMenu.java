@@ -2,17 +2,17 @@ package menuClasses;
 
 import java.util.ArrayList;
 
-public class AlterListContentMenu extends Menu {
+public class AlterListContentMenu extends Menu{
 	private static final AlterListContentMenu MM = new AlterListContentMenu(); 
 	private AlterListContentMenu() { 
 		super(); 
 		String title; 
 		ArrayList<Option> options = new ArrayList<Option>();  
-		title = "Main Menu"; 
-		options.add(new Option("Show all Lists", new ShowListsAction())); 
-		options.add(new Option("Create New List", new CreateListAction()));
-		options.add(new Option("Remove List", new RemoveListAction()));
-		options.add(new Option("Operations on Lists", new OperateListAction())); 
+		title = "Alter List Menu"; 
+		options.add(new Option("Add a New Value to a List", new AddToListAction()));
+		options.add(new Option("Delete a Position form a List", new DeleteFromListAction()));
+		options.add(new Option("Show Content of a List", new ShowListAction()));
+		//options.add(new Option("Add a New Value to a List", new AddToListAction()));
 		options.add(Option.EXIT); 
 
 		super.InitializeMenu(title, options); 
@@ -21,4 +21,6 @@ public class AlterListContentMenu extends Menu {
 	public static AlterListContentMenu getMainMenu() { 
 		return MM; 
 	}
+
+	
 }

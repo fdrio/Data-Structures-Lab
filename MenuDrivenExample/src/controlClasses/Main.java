@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 		DMComponent dm = new DMComponent(); 
 		Stack<Menu> mStack = dm.getMenuStack();  
-		mStack.push(AlterListContentMenu.getMainMenu()); 
+		mStack.push(MainMenu.getMainMenu()); 
 		while(!mStack.empty()) {
 			Option opt = mStack.peek().activate(); 
 			opt.getAction().execute(dm); 

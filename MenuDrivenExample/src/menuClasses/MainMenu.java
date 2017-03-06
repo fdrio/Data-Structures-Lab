@@ -10,11 +10,14 @@ public class MainMenu extends Menu {
 		ArrayList<Option> options = new ArrayList<Option>();  
 		title = "Main Menu"; 
 		options.add(new Option("Show all Lists", new ShowListsAction())); 
-		options.add(new Option("Create New List", new CreateListAction())); 
+		options.add(new Option("Create New List", new CreateListAction()));
+		options.add(new Option("Remove List", new RemoveListAction()));
 		options.add(new Option("Operations on Lists", new OperateListAction())); 
+		options.add(new Option("Alter Lists Menu", new AlterListContentMenuAction()));
 		options.add(Option.EXIT); 
 
 		super.InitializeMenu(title, options); 
+
 	}
 	
 	public static MainMenu getMainMenu() { 
