@@ -2,3 +2,5 @@
 /NodePositionList.class
 /NodePositionListTester.class
 /PositionListElementsIterator.class
+/PositionListElementsBackwardIterator.class
+/NewNodePositionList.class
