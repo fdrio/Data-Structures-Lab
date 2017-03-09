@@ -4,3 +4,5 @@
 /PositionListElementsIterator.class
 /PositionListElementsBackwardIterator.class
 /NewNodePositionList.class
+/DNode.class
+/NewNodePositionList$DNode.class
