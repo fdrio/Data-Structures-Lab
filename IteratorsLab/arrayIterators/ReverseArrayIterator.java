@@ -6,7 +6,8 @@ import java.util.NoSuchElementException;
 public class ReverseArrayIterator<E> implements Iterator<E> {
 
 	private E[] arr;    // the array to iterate over
-	private int current; 
+	private int current;
+	
 	
 	public ReverseArrayIterator(E[] arr) { 
 		this.arr = arr; 

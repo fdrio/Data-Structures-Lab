@@ -20,17 +20,35 @@ public class DLDHDTListIterableL2F<E> extends DLDHDTList<E>
 
 		public LLIteratorF2L(LinkedList<E> list) {
 			theList = list; 
+			if(theList.length() == 0){
+				current = null;
+				hasMoreElements = false;
+			}
+			else{
+				current = theList.getLastNode();
+				hasMoreElements = true;
+			}
 			// ... initialize other internal fields ...
 		}
 
 		public boolean hasNext() {
 			// Write the new code and substitute next statement ....
-			return false; 
+			return hasMoreElements; 
 		}
 
 		public E next() throws NoSuchElementException {
-			// Write the new code and substitute next statement ...
-			return null;
+			if(!hasNext())
+				throw new NoSuchElementException("There is no next");
+				
+				E etr = current.getElement(); 
+				try { 
+					current = theList.getNodeBefore(current); 
+				}
+				catch(NodeOutOfBoundsException e) { 
+					current = null; 
+					hasMoreElements = false; 
+				}
+				return etr;
 		}
 
 		public void remove() throws UnsupportedOperationException 
