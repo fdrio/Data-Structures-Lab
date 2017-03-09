@@ -8,11 +8,6 @@ import exceptionClasses.InvalidPositionException;
 import positionInterfaces.Position;
 import positionInterfaces.PositionList;
 
-
-
-
-
-
 public class NewNodePositionList<T> implements PositionList<T>{
 	private DNode<T> header, trailer; 
 	private int count; 
@@ -45,8 +40,7 @@ public class NewNodePositionList<T> implements PositionList<T>{
 	}
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new PositionListElementsBackwardIterator<T>(this);
 	}
 
 	@Override
@@ -176,6 +170,8 @@ public class NewNodePositionList<T> implements PositionList<T>{
 		}
 		return pList;
 	}
+	
+	
 	/****************************************************************************************/
 	/*  Private class implementing Position<>  For this implementation of the PositionList  */
 	/*  it has to be a DNode<>. Note that under this implementation each node has a         */

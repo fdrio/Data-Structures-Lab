@@ -8,7 +8,7 @@ public class NodePositionListTester {
 	public static void main(String[] args) {
 		
 		NodePositionList<Integer> w = new NodePositionList<Integer> (); 
-		NodePositionList<Integer> q = new NodePositionList<Integer> (); 
+		NewNodePositionList<Integer> q = new NewNodePositionList<Integer> (); 
 		q.addFirst(10); 
 		
 		w.addFirst(5); 
