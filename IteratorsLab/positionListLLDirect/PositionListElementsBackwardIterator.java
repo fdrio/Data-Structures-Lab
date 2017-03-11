@@ -7,7 +7,7 @@ import exceptionClasses.EmptyListException;
 import positionInterfaces.Position;
 import positionInterfaces.PositionList;
 
-public class PositionListElementsBackwardIterator<T> implements Iterator<T>{
+public class PositionListElementsBackwardIterator<T> implements Iterator<T>, NodePositionListIteratoMaker<T>{
 	private Position<T> current; 
 	private PositionList<T> theList; 
 	

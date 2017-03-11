@@ -7,7 +7,7 @@ public class NodePositionListTester {
 
 	public static void main(String[] args) {
 		
-		NodePositionList<Integer> w = new NodePositionList<Integer> (); 
+		NewNodePositionList<Integer> w = new NewNodePositionList<Integer> (); 
 		NewNodePositionList<Integer> q = new NewNodePositionList<Integer> (); 
 		q.addFirst(10); 
 		
@@ -33,6 +33,10 @@ public class NodePositionListTester {
 	}
 
 	private static <E> void showElements(NodePositionList<E> w) {
+		for(E p : w) 
+			System.out.println(p); 
+	}
+	private static <E> void showElements(NewNodePositionList<E> w) {
 		for(E p : w) 
 			System.out.println(p); 
 	}

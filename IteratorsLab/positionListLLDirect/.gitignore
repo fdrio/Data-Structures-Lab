@@ -6,3 +6,8 @@
 /NewNodePositionList.class
 /DNode.class
 /NewNodePositionList$DNode.class
+/PositionListIteratorMaker.class
+/NodePositionListIteratorMaker.class
+/ForwardIteratorMakerClass.class
+/BackwardIteratorMakerClass.class
+/NodePositionListIteratorMaker$DNode.class

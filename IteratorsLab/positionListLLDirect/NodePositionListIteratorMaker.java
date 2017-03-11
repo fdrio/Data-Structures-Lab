@@ -8,14 +8,25 @@ import exceptionClasses.InvalidPositionException;
 import positionInterfaces.Position;
 import positionInterfaces.PositionList;
 
-public class NewNodePositionList<T> implements PositionList<T>{
+
+public class NodePositionListIteratorMaker<T> implements PositionList<T>{
 	private DNode<T> header, trailer; 
 	private int count; 
-	public NewNodePositionList(){
+	PositionListIteratorMaker<T> iteratorGenerator;
+	public NodePositionListIteratorMaker(){
 		header = new DNode<T>(null, null, null, this); 
 		trailer = new DNode<T>(null, header, null, this);
 		header.setNext(trailer); 
 		count = 0; 
+		iteratorGenerator = new ForwardIteratorMakerClass<>();
+		
+	}
+	
+	public NodePositionListIteratorMaker(PositionListIteratorMaker iteratorMaker){
+		
+		this();
+		iteratorGenerator = iteratorMaker;
+		
 	}
 	private DNode<T> checkPosition(Position<T> p) throws InvalidPositionException { 
 		// in order to be valid: p must represent a valid data position inside
@@ -180,9 +191,9 @@ public class NewNodePositionList<T> implements PositionList<T>{
 	private static class DNode<T> implements Position<T> {
         private T element; 
         private DNode<T> next, prev; 
-        private NewNodePositionList<T> myList;     // list it belongs to
+        private NodePositionListIteratorMaker<T> myList;     // list it belongs to
         
-        public DNode(T e, DNode<T> p, DNode<T> n, NewNodePositionList<T> newNodePositionList) { 
+        public DNode(T e, DNode<T> p, DNode<T> n, NodePositionListIteratorMaker<T> newNodePositionList) { 
         	element = e; 
         	next = n; 
         	prev = p; 
@@ -206,10 +217,10 @@ public class NewNodePositionList<T> implements PositionList<T>{
 		public DNode<T> getPrev() { 
 			return prev; 
 		}
-		public void setList(NewNodePositionList<T> n) { 
+		public void setList(NodePositionListIteratorMaker<T> n) { 
 			myList = n; 
 		}
-		public NewNodePositionList<T> getList() { 
+		public NodePositionListIteratorMaker<T> getList() { 
 			return myList; 
 		}
 		
@@ -223,7 +234,4 @@ public class NewNodePositionList<T> implements PositionList<T>{
 		}
 		
 	}
-
-	
-
 }
