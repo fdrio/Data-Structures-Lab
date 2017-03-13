@@ -7,8 +7,8 @@ import positionInterfaces.PositionList;
 public class ForwardIteratorMakerClass<T> implements PositionListIteratorMaker<T>{
 
 	@Override
-	public Iterator<T> makeIterator(PositionList<T> pl) {
+	public Iterator<T> makeIterator(PositionList<T> positionList) {
 		// TODO Auto-generated method stub
-		return new PositionListElementsIterator<T>(pl);
+		return new PositionListElementsIterator<T>(positionList);
 	}
 }
