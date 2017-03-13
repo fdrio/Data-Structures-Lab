@@ -13,19 +13,15 @@ public class NodePositionListIteratorMaker<T> implements PositionList<T>{
 	private DNode<T> header, trailer; 
 	private int count; 
 	PositionListIteratorMaker<T> iteratorGenerator;
-	public NodePositionListIteratorMaker(){
-		header = new DNode<T>(null, null, null, this); 
-		trailer = new DNode<T>(null, header, null, this);
-		header.setNext(trailer); 
-		count = 0; 
-		iteratorGenerator = new ForwardIteratorMakerClass<>();
-		
-	}
+
 	
 	
 	public NodePositionListIteratorMaker(PositionListIteratorMaker iteratorMaker){
 		
-		this();
+		header = new DNode<T>(null, null, null, this); 
+		trailer = new DNode<T>(null, header, null, this);
+		header.setNext(trailer); 
+		count = 0; 
 		iteratorGenerator = iteratorMaker;
 		
 	}

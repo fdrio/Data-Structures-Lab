@@ -9,7 +9,7 @@ public class BackwardIteratorMakerClass<T> implements PositionListIteratorMaker<
 	@Override
 	public Iterator<T> makeIterator(PositionList<T> positionList) {
 		// TODO Auto-generated method stub
-		return new PositionListElementsIterator<T>(positionList);
+		return new PositionListElementsBackwardIterator<T>(positionList);
 	}
 
 }
