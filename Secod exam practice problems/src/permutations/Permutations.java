@@ -7,6 +7,7 @@ public class Permutations {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the string to permute: ");
 		String inputString = input.nextLine();
 		PermutationGenerator permutator = new PermutationGenerator();
 		ArrayList<String> permutations = permutator.permutatedStrings(inputString);
