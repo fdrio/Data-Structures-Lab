@@ -13,20 +13,20 @@ public class NodePositionListIteratorMaker<T> implements PositionList<T>{
 	private DNode<T> header, trailer; 
 	private int count; 
 	PositionListIteratorMaker<T> iteratorGenerator;
-	public NodePositionListIteratorMaker(){
+
+	
+	
+	public NodePositionListIteratorMaker(PositionListIteratorMaker iteratorMaker){
+		
 		header = new DNode<T>(null, null, null, this); 
 		trailer = new DNode<T>(null, header, null, this);
 		header.setNext(trailer); 
 		count = 0; 
-		iteratorGenerator = new ForwardIteratorMakerClass<>();
-		
-	}
-	
-	public NodePositionListIteratorMaker(PositionListIteratorMaker iteratorMaker){
-		
-		this();
 		iteratorGenerator = iteratorMaker;
 		
+	}
+	public Iterator<T> iterator() {
+		return iteratorGenerator.makeIterator(this);
 	}
 	private DNode<T> checkPosition(Position<T> p) throws InvalidPositionException { 
 		// in order to be valid: p must represent a valid data position inside
@@ -49,10 +49,7 @@ public class NodePositionListIteratorMaker<T> implements PositionList<T>{
 			throw new InvalidPositionException("Position is not of type DNode"); 
 		}
 	}
-	@Override
-	public Iterator<T> iterator() {
-		return new PositionListElementsBackwardIterator<T>(this);
-	}
+	
 
 	@Override
 	public Position<T> first() throws EmptyListException {
