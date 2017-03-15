@@ -19,7 +19,7 @@ public class Permutations {
 	}
 
 	private static class PermutationGenerator{
-		//String string;
+		
 		ArrayList<String> permutations;
 		public PermutationGenerator(){
 
