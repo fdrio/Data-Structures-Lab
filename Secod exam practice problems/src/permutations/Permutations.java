@@ -7,10 +7,12 @@ public class Permutations {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the string to permute: ");
-		String inputString = input.nextLine();
+		System.out.println("Enter the index of the alphabet to permute: ");
+		int stringIndex = input.nextInt();
+		String alphabet ="abcdefghijklmnopqrstuvwxyz";
+		String substring = alphabet.substring(0, stringIndex);
 		PermutationGenerator permutator = new PermutationGenerator();
-		ArrayList<String> permutations = permutator.permutatedStrings(inputString);
+		ArrayList<String> permutations = permutator.permutatedStrings(substring);
 		for(String permutation : permutations)
 			System.out.println(permutation);
 
