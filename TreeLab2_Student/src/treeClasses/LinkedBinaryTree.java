@@ -146,7 +146,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	 *
 	 * @param <E> Data type of element in Node
 	 */
-	private static class Node<E> implements Position<E> { 
+	private static class Node<E> implements Position<E>, Cloneable { 
 		private E element; 
 		private Node<E> parent, left, right; 
 		public Node() {}
@@ -200,4 +200,29 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	protected Node<E> createNode(E e, Node<E> p, Node<E> l, Node<E> r) { 
 		return new Node<E>(e, p, l, r); 
 	}
+	// Creating a CLONE
+		public LinkedBinaryTree<E> clone() throws CloneNotSupportedException { 
+			LinkedBinaryTree<E> other = new LinkedBinaryTree<>(); 
+			if (!isEmpty()){
+				other.addRoot(root().getElement()); 
+				cloneSubtree(root(), other, other.root()); 
+			}
+
+			return other; 
+		}
+
+		private void cloneSubtree(Position<E> rThis, LinkedBinaryTree<E> other,
+				Position<E> rOther) {
+			Position<E> otherPos;
+			for (Position<E> thisPosition : children(rThis)) { 
+				if((this.right(this.parent(thisPosition)) == thisPosition)){  //same logic behind the recDisplay method
+					otherPos = other.addRight(rOther, thisPosition.getElement());
+					
+				}else {
+					otherPos = other.addLeft(rOther, thisPosition.getElement());
+					
+				}
+				cloneSubtree(thisPosition, other, otherPos); 
+			}
+		}
 }

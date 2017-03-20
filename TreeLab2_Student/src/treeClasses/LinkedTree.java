@@ -15,25 +15,25 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 
 	private Node<E> root; 
 	private int size; 
-	
+
 	public LinkedTree() { 
 		root = null; 
 		size = 0; 
 	}
-	
+
 	private Node<E> validate(Position<E> p) throws IllegalArgumentException { 
 		if (!(p instanceof Node<?>)) 
 			throw new IllegalArgumentException("Invalid position type for this implementation."); 
 		Node<E> np = (Node<E>) p; 
 		if (np.getParent() == np)
 			throw new IllegalArgumentException("Target position is not part of a tree.");
-		
+
 		// the following validates that p is a position in this tree
 		if (np.getOwnerTree() != this)
 			throw new IllegalArgumentException("Target position is not part of the tree.");	
 		return np; 
 	}
-	
+
 	@Override
 	public Position<E> root() {
 		return root;
@@ -97,7 +97,7 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 		size++; 
 		return nuevo; 
 	}
-	
+
 	public E remove(Position<E> p) throws IllegalArgumentException { 
 		Node<E> ntd = validate(p); 
 		E etr = ntd.getElement(); 
@@ -119,30 +119,31 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 				childNTD.setParent(parent); 
 			}	
 		}
-		
+
 		/*******************************************************/
 		// SOME MISSING CODE HERE -- DISCOVER IT AN ADD... 
 		// AS SPECIFIED IN EXERCISE 4. 
-		
-		
+
+
 		// discard the removed node
 		parent.getChildren().remove(ntd);
 		ntd.discard(); 
-		
+
 		size--;    // adjust size
 		return etr;   // return removed value
 	}
-	
+
 	// Creating a CLONE
 	public LinkedTree<E> clone() throws CloneNotSupportedException { 
 		LinkedTree<E> other = new LinkedTree<>(); 
-		if (!isEmpty())
+		if (!isEmpty()){
 			other.addRoot(root().getElement()); 
-		cloneSubtree(root(), other, other.root()); 
-		
+			cloneSubtree(root(), other, other.root()); 
+		}
+
 		return other; 
 	}
-	
+
 	private void cloneSubtree(Position<E> rThis, LinkedTree<E> other,
 			Position<E> rOther) {
 		for (Position<E> pThis : children(rThis)) { 
@@ -163,7 +164,7 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 		private Node<E> parent; 
 		private ArrayList<Node<E>> children; 
 		private LinkedTree<E> ownerTree;  // the tree the node belongs to
-		
+
 		public Node(E element, Node<E> parent, ArrayList<Node<E>> c, 
 				LinkedTree<E> ownerTree) { 
 			this.element = element; 
@@ -171,19 +172,19 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 			this.children = c; 
 			this.ownerTree = ownerTree;   
 		}
-		
+
 		public Node(E element) { 
 			this.element = element; 
 			this.parent = this; 
 			this.children = null; 
 		}
-		
+
 		public void clear() { 
 			this.element = null; 
 			this.parent = this; 
 			this.children = null; 
 		}
-		
+
 		public Node<E> getParent() {
 			return parent;
 		}
@@ -204,19 +205,19 @@ public class LinkedTree<E> extends AbstractTree<E> implements Cloneable {
 		public E getElement() {
 			return element;
 		} 
-		
+
 		public void setElement(E e) { 
 			element = e; 
 		}		
-		
+
 		public LinkedTree<E> getOwnerTree() { 
 			return ownerTree; 
 		}
-		
+
 		public void setOwnerTree(LinkedTree<E> t) { 
 			ownerTree = t; 
 		}
-		
+
 		public void discard() { 
 			parent = this; 
 			element = null; 

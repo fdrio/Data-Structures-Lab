@@ -15,7 +15,7 @@ public class LinkedBinaryTree2<E extends Comparable<E>> extends AbstractBinaryTr
 
 	private void recInsert(Position<E> r, E e) {
 		int c = e.compareTo(r.getElement()); 
-		if (c < 0) 
+		if (c > 0) 
 			if (!t.hasLeft(r))
 				t.addLeft(r, e); 
 			else 
