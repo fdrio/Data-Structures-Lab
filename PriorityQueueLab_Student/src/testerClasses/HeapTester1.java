@@ -6,7 +6,7 @@ public class HeapTester1 {
 
 	public static void main(String[] args) {
 
-		Heap<Integer> h = new Heap<>(new IntegerComparator1());    // LINE **
+		Heap<Integer> h = new Heap<>(new IntegerComparator2());    // LINE **
 		add(h, 20);
 		removeMin(h); 
 		add(h, 10);

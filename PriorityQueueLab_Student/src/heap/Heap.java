@@ -29,13 +29,13 @@ import treeClasses.LinkedBinaryTree;
 public class Heap<E> extends CompleteBinaryTree<E> {
 
 	private Comparator<E> cmp;        // heap insertion is based on this comparator
-	
+
 	public Heap(Comparator<E> cmp) { 
 		this.cmp = cmp; 
 	}
-		
 
-	
+
+
 	/**
 	 * Method to add a new element to the heap. 
 	 * Adds a new element to the heap. The heap is assumed to be a min-heap. 
@@ -51,7 +51,7 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 		upHeap(p);      // do up-heap as necessary from that position.
 		return p; 
 	}
-	
+
 	/**
 	 * Returns minimum element in the heap. That element is at location 0
 	 * in the array or arraylist. 
@@ -62,7 +62,7 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 			return null; 
 		return list.get(0).getElement();    // min element is at position 0 
 	}
-	
+
 
 	/** 
 	 * Same effect as min() but it also removes that element from the pq. 
@@ -71,24 +71,37 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 	public E removeMin() { 
 		if (list.isEmpty())
 			return null; 
-		
+
 		CBTPosition<E> ptr = (CBTPosition<E>) list.get(0);
-		
+
 		if (list.size() > 1) {
-		   list.set(0, list.remove(list.size()-1)); 
-		   ((CBTPosition<E>) list.get(0)).setIndex(0);
-		   downHeap((CBTPosition<E>) list.get(0)); 
+			list.set(0, list.remove(list.size()-1)); 
+			((CBTPosition<E>) list.get(0)).setIndex(0);
+			downHeap((CBTPosition<E>) list.get(0)); 
 		}
 		else 
 			list.remove(0);
-		
+
 		return ptr.getElement(); 
 	}
-	
+
 	/**
 	 * Does downheap of r in subtree having root r
 	 * @param r
 	 */
+	
+	
+	
+/*
+ The downheap process is similar to the upheaping process. When you downheap a node, 
+ you compare its value with its two children. If the node is less than both of its children, 
+ it remains in place; otherwise, if it is greater than one or both of its children, 
+ then you switch it with the child of lowest value, thereby ensuring that of the three nodes being compared, 
+ the new parent node is lowest. Of course, you cannot be assured that the node being downheaped is in its proper position 
+ it may be greater than one or both of its new children; 
+ the downheap process must be repeated until the node is less than both of its children. 
+  	
+ */
 	private void downHeap(CBTPosition<E> r) { 
 		if (this.hasLeft(r)) { 
 			CBTPosition<E> minChild = (CBTPosition<E>) this.left(r); 
@@ -98,8 +111,12 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 					minChild = rChild; 
 			}
 
+			if (cmp.compare(r.getElement(), minChild.getElement()) > 0) { 
+				swapPositionsInList(r, minChild); 
+				downHeap(r);
+
+			}
 			// CODE IS MISSING HERE ... ADD THE CORRECT CODE
-			
 		}
 	}
 
@@ -120,7 +137,7 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 			}
 		}
 	}
-	
+
 	/** 
 	 * Interchanges two position in the array. 
 	 * 
@@ -132,10 +149,10 @@ public class Heap<E> extends CompleteBinaryTree<E> {
 		int ic = c.getIndex(); 
 		r.setIndex(ic);         // since position change location, indexes are changed too
 		c.setIndex(ir);
-		
+
 		// swap content of location ir and ic in the arraylist
 		list.set(ir, list.set(ic, r));   // swaps elements at positions ir and ic in list
-		   
+
 	}
 
 }
