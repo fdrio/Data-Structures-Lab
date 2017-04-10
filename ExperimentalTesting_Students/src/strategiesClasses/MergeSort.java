@@ -39,12 +39,14 @@ public class MergeSort<E> extends AbstractSortingStrategy<E> {
 	 */
 	private void ms(int first, int last) {
 		//EXERCISE 3
+		// Recursively divide the array until there there is only element left to sort
+		// Our base case would be when first equals last which would be exactly one element left to sort in the array
 		if(first<last){
-			int middle = (first + last)/2;
-			ms(first,middle); 
-			ms(middle+1,last); 
+			int mid = (first + last)/2;
+			ms(first,mid); // First half of the array
+			ms(mid+1,last); // Second half of the array
 			
-			merge(first,middle,last);
+			merge(first,mid,last); // merge the two arrays
 		}
 	}
 

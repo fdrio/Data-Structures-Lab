@@ -20,7 +20,7 @@ public class QuickSort<E> extends AbstractSortingStrategy<E> {
 	public QuickSort(Comparator<E> cmp) { 
 		super("QuickSort", cmp); 
 	}
-	
+
 	@Override
 	public void sortList(ArrayList<E> dataSet) {
 		list = dataSet; 
@@ -38,13 +38,13 @@ public class QuickSort<E> extends AbstractSortingStrategy<E> {
 	 * portion
 	 */
 	private void qs(int first, int last) {
-		
-		//EX 4
-	if(first<last){
-			 int  partition = partitionList(first,last);
-			 qs(first,partition-1);
-			 qs(partition+1,last);
-	}
+
+		// recursively partitions the list until there is only one thing left to sort
+		if(first<last){
+			int  tempPivot = partitionList(first,last);
+			qs(first,tempPivot-1);
+			qs(tempPivot+1,last);
+		}
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class QuickSort<E> extends AbstractSortingStrategy<E> {
 	private int partitionList(int first, int last) { 
 		E pivot = list.get(last); 
 		int left = first, right = last-1; 
-		
+
 		while (left <= right) {
 			while (left <= right && cmp.compare(list.get(left), pivot) <= 0)
 				left++; 
