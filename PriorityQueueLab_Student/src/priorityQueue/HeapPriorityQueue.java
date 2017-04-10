@@ -9,7 +9,7 @@ import priorityQueueInterfaces.Entry;
  * Implementation of a priority queue that uses a previous implementation of
  * the heap ADT as an instance field. The elements in the queue are stored
  * in the internal heap. 
- * @author pedroirivera-vega
+ * @author Francisco Diaz
  *
  * @param <K>
  * @param <V>
