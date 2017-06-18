@@ -17,7 +17,7 @@ public class SelectionSort<E> extends AbstractSortingStrategy<E> {
 	public void sortList(ArrayList<E> dataSet) {
 		int n = dataSet.size(); 
 		for (int i=n-1; i>0; i--) {
-			int mpi = 0; 
+			int mpi = i; 
 			for (int j=0; j<i; j++) 
 				if (cmp.compare(dataSet.get(j), dataSet.get(mpi)) > 0)
 					mpi = j; 

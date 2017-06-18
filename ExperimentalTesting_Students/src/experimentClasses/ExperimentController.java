@@ -75,6 +75,7 @@ public class ExperimentController{
 				// The following will be the common dataset to be used in the current 
 				// trial. 
 				dataSet = TestingUtils.generateListOfIntegers(n); 
+				dataSet.sort(null);
 				
 				// Apply each one of the strategies being tested using the previous 
 				// dataset (of size n) as input; and, for each, estimate the time
